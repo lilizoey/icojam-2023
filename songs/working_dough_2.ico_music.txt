@@ -1,0 +1,9 @@
+140
+1/4
+A:
+	| R3 | R3 | R3 | R3 | R4 |
+	# things start here
+	| R4 | N R N R | R4 | N R N R |
+	| R10/1 |
+B:
+	
