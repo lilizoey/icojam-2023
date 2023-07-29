@@ -22,9 +22,17 @@ func _on_song_player_pressed(action):
 			$DebugHitTrackerB.pressed()
 
 func _on_song_player_note(action, beat_fraction):
-	$BeatPlayer.play("note")
+	match action:
+		Song.Action.A:
+			$BeatPlayerA.play("note")
+		Song.Action.B:
+			$BeatPlayerB.play("note")
 
 func _on_song_player_rest(action, beat_fraction):
-	$BeatPlayer.play("rest")
+	match action:
+		Song.Action.A:
+			$BeatPlayerA.play("rest")
+		Song.Action.B:
+			$BeatPlayerB.play("rest")
 
 

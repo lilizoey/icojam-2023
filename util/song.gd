@@ -9,7 +9,7 @@ signal rest(action: Action, beat_fraction: Fraction)
 signal incremented(action: Action, last_sign: Sign, new_sign: Sign, last_index: int, new_index: int)
 signal lost_note(action: Action, note: Note, index: int)
 
-@export var offset: float = 0.88
+@export var offset: float = 0.0
 
 @export_file() var file: String
 
