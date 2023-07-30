@@ -1,10 +1,51 @@
-[gd_scene load_steps=14 format=3 uid="uid://rlry2fgpi4qd"]
+[gd_scene load_steps=16 format=3 uid="uid://rlry2fgpi4qd"]
 
 [ext_resource type="Script" path="res://node_2d.gd" id="1_uuwvl"]
 [ext_resource type="Script" path="res://song_player.gd" id="2_oawrg"]
+[ext_resource type="AudioStream" uid="uid://d08mq2mu6oty4" path="res://songs/tutorial_hit_a.ogg" id="2_r5pbh"]
+[ext_resource type="AudioStream" uid="uid://c3u0pg300kffx" path="res://songs/tutorial_hit_b.ogg" id="3_0uubn"]
 [ext_resource type="AudioStream" uid="uid://c2d3b4i2qc6ru" path="res://songs/tutorial.ogg" id="3_med28"]
 [ext_resource type="Script" path="res://util/song.gd" id="4_7xmj3"]
 [ext_resource type="PackedScene" uid="uid://bxm8hs8fh3sax" path="res://debug_hit_tracker.tscn" id="5_ycakx"]
+
+[sub_resource type="Animation" id="Animation_0pkx5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BeatRectA:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BeatRectA:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(40, 40)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BeatRectA:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(223, 149)]
+}
 
 [sub_resource type="Animation" id="Animation_7ckty"]
 resource_name = "note"
@@ -44,45 +85,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(213, 139), Vector2(223, 149)]
-}
-
-[sub_resource type="Animation" id="Animation_0pkx5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BeatRectA:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 0, 0, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("BeatRectA:size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(60, 60)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("BeatRectA:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(223, 149)]
 }
 
 [sub_resource type="Animation" id="Animation_4ha06"]
@@ -132,6 +134,45 @@ _data = {
 "rest": SubResource("Animation_4ha06")
 }
 
+[sub_resource type="Animation" id="Animation_xwstf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BeatRectB:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BeatRectB:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(40, 40)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BeatRectB:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(284, 153)]
+}
+
 [sub_resource type="Animation" id="Animation_k1ax4"]
 resource_name = "note"
 length = 0.1
@@ -170,45 +211,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(274, 143), Vector2(284, 153)]
-}
-
-[sub_resource type="Animation" id="Animation_xwstf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BeatRectB:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 1, 0, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("BeatRectB:size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(60, 60)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("BeatRectB:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(274, 143)]
 }
 
 [sub_resource type="Animation" id="Animation_p83ru"]
@@ -264,26 +266,32 @@ script = ExtResource("1_uuwvl")
 [node name="BeatRectA" type="ColorRect" parent="."]
 offset_left = 223.0
 offset_top = 149.0
-offset_right = 283.0
-offset_bottom = 209.0
-color = Color(1, 0, 0, 1)
+offset_right = 263.0
+offset_bottom = 189.0
 
 [node name="BeatPlayerA" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_lmnhe")
 }
 
+[node name="HitA" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_r5pbh")
+volume_db = -10.0
+
 [node name="BeatRectB" type="ColorRect" parent="."]
-offset_left = 274.0
-offset_top = 143.0
-offset_right = 334.0
-offset_bottom = 203.0
-color = Color(0, 1, 0, 1)
+offset_left = 284.0
+offset_top = 153.0
+offset_right = 324.0
+offset_bottom = 193.0
 
 [node name="BeatPlayerB" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_lu4yp")
 }
+
+[node name="HitB" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0uubn")
+volume_db = -10.0
 
 [node name="SongPlayer" type="Node" parent="." node_paths=PackedStringArray("song")]
 script = ExtResource("2_oawrg")
@@ -291,7 +299,7 @@ song = NodePath("Song")
 
 [node name="Song" type="AudioStreamPlayer" parent="SongPlayer"]
 stream = ExtResource("3_med28")
-volume_db = -23.869
+volume_db = -10.0
 autoplay = true
 script = ExtResource("4_7xmj3")
 file = "res://songs/tutorial.txt"

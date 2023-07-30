@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://ox8stop266vj"]
+
+[ext_resource type="Script" path="res://menus/main_menu.gd" id="1_875r5"]
+[ext_resource type="PackedScene" uid="uid://bxtxorx0xy5rs" path="res://menus/title_screen.tscn" id="1_tub42"]
+[ext_resource type="PackedScene" uid="uid://nw2mo6jbtaeb" path="res://menus/settings.tscn" id="3_ecn2x"]
+[ext_resource type="PackedScene" uid="uid://khglof828lmx" path="res://menus/level_select.tscn" id="4_t370w"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_875r5")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleScreen" parent="." instance=ExtResource("1_tub42")]
+layout_mode = 1
+
+[node name="Settings" parent="." instance=ExtResource("3_ecn2x")]
+visible = false
+layout_mode = 1
+
+[node name="LevelSelect" parent="." instance=ExtResource("4_t370w")]
+visible = false
+layout_mode = 1
+
+[connection signal="play" from="TitleScreen" to="." method="_on_title_screen_play"]
+[connection signal="settings" from="TitleScreen" to="." method="_on_title_screen_settings"]
+[connection signal="_return" from="Settings" to="." method="_on_settings__return"]

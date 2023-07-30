@@ -4,8 +4,10 @@ func _on_song_player_hit(action, note, index, accuracy):
 	match action:
 		Song.Action.A:
 			$DebugHitTrackerA.hit(accuracy)
+			$HitA.play()
 		Song.Action.B:
 			$DebugHitTrackerB.hit(accuracy)
+			$HitB.play()
 
 func _on_song_player_miss(action, note, index, early_late):
 	match action:
