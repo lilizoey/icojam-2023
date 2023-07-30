@@ -6,6 +6,7 @@ static func parse(contents: String) -> SongData:
 	
 	var section_a := 0
 	var section_b := 0
+	var has_title := lines[0].begins_with("title:")
 	
 	for i in range(0, lines.size()):
 		if lines[i].begins_with("A:"):
@@ -13,8 +14,17 @@ static func parse(contents: String) -> SongData:
 		if lines[i].begins_with("B:"):
 			section_b = i
 	
-	var bpm = int(lines[0])
-	var basic_note = lines[1]
+	var title := "unknown"
+	var bpm: int
+	var basic_note: String
+	
+	if has_title:
+		title = lines[0].strip_edges()
+		bpm = int(lines[1])
+		basic_note = lines[2].strip_edges()
+	else:
+		bpm = int(lines[0])
+		basic_note = lines[1].strip_edges()
 	
 	var data_a: Array[String] = []
 	for i in range(section_a + 1, section_b):
@@ -36,7 +46,7 @@ static func parse(contents: String) -> SongData:
 	var data_track_a: DataTrack = DataTrack.new(basic_note, data_a)
 	var data_track_b: DataTrack = DataTrack.new(basic_note, data_b)
 	
-	return SongData.new(bpm, data_track_a.basic_note, data_track_a, data_track_b)
+	return SongData.new(title, bpm, data_track_a.basic_note, data_track_a, data_track_b)
 
 class DataTrack:
 	var basic_note: Fraction
@@ -57,8 +67,10 @@ class DataTrack:
 			
 			if trimmed.begins_with("N"):
 				sign = Note.new(self.basic_note)
-			if trimmed.begins_with("R"):
+			elif trimmed.begins_with("R"):
 				sign = Rest.new(self.basic_note)
+			else:
+				push_error("unknown note type: ", trimmed)
 			
 			if trimmed.length() == 1:
 				data_arr.append(sign)
@@ -92,12 +104,14 @@ class DataTrack:
 		self.data = data_arr
 
 class SongData:
+	var title: String
 	var bpm: int
 	var basic_note: Fraction
 	var a: DataTrack
 	var b: DataTrack
 	
-	func _init(bpm: int, basic_note: Fraction, a: DataTrack, b: DataTrack):
+	func _init(title: String, bpm: int, basic_note: Fraction, a: DataTrack, b: DataTrack):
+		self.title = title
 		self.bpm = bpm
 		self.basic_note = basic_note
 		self.a = a

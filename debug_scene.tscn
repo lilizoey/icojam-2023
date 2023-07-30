@@ -1,12 +1,12 @@
 [gd_scene load_steps=17 format=3 uid="uid://rlry2fgpi4qd"]
 
 [ext_resource type="Script" path="res://node_2d.gd" id="1_uuwvl"]
-[ext_resource type="Script" path="res://song_player.gd" id="2_oawrg"]
-[ext_resource type="AudioStream" uid="uid://d08mq2mu6oty4" path="res://songs/tutorial_hit_a.ogg" id="2_r5pbh"]
 [ext_resource type="PackedScene" uid="uid://dwindtn3lciui" path="res://menus/pause_menu.tscn" id="2_u2noy"]
-[ext_resource type="AudioStream" uid="uid://c3u0pg300kffx" path="res://songs/tutorial_hit_b.ogg" id="3_0uubn"]
-[ext_resource type="AudioStream" uid="uid://c2d3b4i2qc6ru" path="res://songs/tutorial.ogg" id="3_med28"]
+[ext_resource type="AudioStream" uid="uid://d08mq2mu6oty4" path="res://song/songs/tutorial_hit_a.ogg" id="2_ufn03"]
+[ext_resource type="AudioStream" uid="uid://c3u0pg300kffx" path="res://song/songs/tutorial_hit_b.ogg" id="3_4uv1i"]
 [ext_resource type="Script" path="res://util/song.gd" id="4_7xmj3"]
+[ext_resource type="Script" path="res://song/song_player.gd" id="4_dllie"]
+[ext_resource type="AudioStream" uid="uid://c2d3b4i2qc6ru" path="res://song/songs/tutorial.ogg" id="5_g335d"]
 [ext_resource type="PackedScene" uid="uid://bxm8hs8fh3sax" path="res://debug_hit_tracker.tscn" id="5_ycakx"]
 
 [sub_resource type="Animation" id="Animation_0pkx5"]
@@ -276,7 +276,7 @@ libraries = {
 }
 
 [node name="HitA" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_r5pbh")
+stream = ExtResource("2_ufn03")
 volume_db = -10.0
 
 [node name="BeatRectB" type="ColorRect" parent="."]
@@ -291,20 +291,20 @@ libraries = {
 }
 
 [node name="HitB" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_0uubn")
+stream = ExtResource("3_4uv1i")
 volume_db = -10.0
 
 [node name="SongPlayer" type="Node" parent="." node_paths=PackedStringArray("song")]
-script = ExtResource("2_oawrg")
+script = ExtResource("4_dllie")
 song = NodePath("Song")
 
 [node name="Song" type="AudioStreamPlayer" parent="SongPlayer"]
-stream = ExtResource("3_med28")
+stream = ExtResource("5_g335d")
 volume_db = -10.0
 autoplay = true
 bus = &"Music"
 script = ExtResource("4_7xmj3")
-file = "res://songs/tutorial.txt"
+file = "res://song/tutorial.txt"
 
 [node name="DebugHitTrackerA" parent="." instance=ExtResource("5_ycakx")]
 position = Vector2(122, 137)

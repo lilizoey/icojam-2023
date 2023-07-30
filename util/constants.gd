@@ -68,7 +68,7 @@ const ACCURACY_BASE := {
 	Accuracy.Perfect: 0.080,
 	Accuracy.Good: 0.140,
 	Accuracy.Ok: 0.200,
-	Accuracy.Miss: 0.600,
+	Accuracy.Miss: 0.350,
 }
 
 const ACCURACY_MUL := {

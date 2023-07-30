@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://tsom6up5ph2m"]
+
+[ext_resource type="Script" path="res://song/song_player.gd" id="1_rl1c8"]
+[ext_resource type="PackedScene" uid="uid://ctqaygt73bbu1" path="res://song/debug_menu.tscn" id="2_qdfcq"]
+
+[node name="SongPlayer" type="Node"]
+script = ExtResource("1_rl1c8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DebugMenu" parent="CanvasLayer" instance=ExtResource("2_qdfcq")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 336.0
+offset_bottom = 155.0
+grow_horizontal = 1
+grow_vertical = 1

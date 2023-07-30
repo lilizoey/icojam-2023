@@ -1,0 +1,226 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctqaygt73bbu1"]
+
+[ext_resource type="Script" path="res://song/debug_menu.gd" id="1_4ls8p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6n81"]
+border_width_top = 2
+border_color = Color(0.4, 0.4, 0.4, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qye2q"]
+border_width_right = 2
+border_color = Color(0.4, 0.4, 0.4, 1)
+
+[sub_resource type="Theme" id="Theme_6aoic"]
+HSeparator/constants/separation = 2
+HSeparator/styles/separator = SubResource("StyleBoxFlat_j6n81")
+Label/font_sizes/font_size = 18
+VSeparator/constants/separation = 2
+VSeparator/styles/separator = SubResource("StyleBoxFlat_qye2q")
+
+[sub_resource type="SystemFont" id="SystemFont_gfkfi"]
+font_names = PackedStringArray("Monospace")
+
+[node name="DebugMenu" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_6aoic")
+script = ExtResource("1_4ls8p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="Title" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Some Title"
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="BPM" type="Label" parent="VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "BPM: 120"
+
+[node name="VSeparator3" type="VSeparator" parent="VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="BeatLength" type="Label" parent="VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Beat Length: 1/4"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="PlaybackInfo" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Playback Info"
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+theme_override_constants/separation = 0
+
+[node name="TimeDisplay" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Time" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer/TimeDisplay"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.99
+text = "Time"
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer2/VBoxContainer/TimeDisplay"]
+layout_mode = 2
+
+[node name="TimeSeconds" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer/TimeDisplay"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_fonts/font = SubResource("SystemFont_gfkfi")
+text = "00:00.000"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="NoteDisplayA" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Note" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer/NoteDisplayA"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Current Note A"
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer2/VBoxContainer/NoteDisplayA"]
+layout_mode = 2
+
+[node name="NoteIndex" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer/NoteDisplayA"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+theme_override_fonts/font = SubResource("SystemFont_gfkfi")
+text = "0"
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/HBoxContainer2/VBoxContainer/NoteDisplayA"]
+layout_mode = 2
+
+[node name="NoteType" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer/NoteDisplayA"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+text = "0"
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="NoteDisplayB" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Note" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer/NoteDisplayB"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Current Note B"
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer2/VBoxContainer/NoteDisplayB"]
+layout_mode = 2
+
+[node name="NoteIndex" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer/NoteDisplayB"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+theme_override_fonts/font = SubResource("SystemFont_gfkfi")
+text = "0"
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/HBoxContainer2/VBoxContainer/NoteDisplayB"]
+layout_mode = 2
+
+[node name="NoteType" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer/NoteDisplayB"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+text = "0"
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="Back" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "<-"
+
+[node name="Play" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+text = "▶️"
+
+[node name="Forward" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "->"
+
+[node name="Control2" type="Control" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/Forward" to="." method="_on_forward_pressed"]

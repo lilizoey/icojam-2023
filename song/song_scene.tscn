@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://q17ap1lnprp"]
+
+[ext_resource type="Script" path="res://song/song_scene.gd" id="1_81fn2"]
+[ext_resource type="PackedScene" uid="uid://dwindtn3lciui" path="res://menus/pause_menu.tscn" id="2_j4duf"]
+[ext_resource type="Script" path="res://song/song_effect.gd" id="2_tymt7"]
+[ext_resource type="PackedScene" uid="uid://tsom6up5ph2m" path="res://song/song_player.tscn" id="3_jbhb8"]
+[ext_resource type="AudioStream" uid="uid://c2d3b4i2qc6ru" path="res://song/songs/tutorial/tutorial.ogg" id="4_i72us"]
+[ext_resource type="Script" path="res://song/song.gd" id="4_xttmp"]
+
+[sub_resource type="Resource" id="Resource_nr0ye"]
+script = ExtResource("2_tymt7")
+animation_player = NodePath("")
+on_hit_animation = "hit"
+on_hit_ok_animation = ""
+on_hit_good_animation = ""
+on_hit_perfect_animation = ""
+on_miss_animation = "miss"
+on_pressed_animation = ""
+on_note_animation = ""
+on_rest_animation = ""
+
+[sub_resource type="Resource" id="Resource_wui7r"]
+script = ExtResource("2_tymt7")
+animation_player = NodePath("")
+on_hit_animation = "hit"
+on_hit_ok_animation = ""
+on_hit_good_animation = ""
+on_hit_perfect_animation = ""
+on_miss_animation = "miss"
+on_pressed_animation = ""
+on_note_animation = ""
+on_rest_animation = ""
+
+[node name="SongScene" type="Node2D"]
+script = ExtResource("1_81fn2")
+default_a_effect = SubResource("Resource_nr0ye")
+default_b_effect = SubResource("Resource_wui7r")
+
+[node name="SongPlayer" parent="." node_paths=PackedStringArray("song") instance=ExtResource("3_jbhb8")]
+song = NodePath("Song")
+display_debug = true
+
+[node name="Song" type="AudioStreamPlayer" parent="SongPlayer"]
+stream = ExtResource("4_i72us")
+autoplay = true
+bus = &"Music"
+script = ExtResource("4_xttmp")
+offset = 0.03
+file = "res://song/songs/tutorial.txt"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_j4duf")]
+visible = false
+
+[node name="DefaultPlayerA" type="AnimationPlayer" parent="."]
+
+[node name="DefaultPlayerB" type="AnimationPlayer" parent="."]
+
+[connection signal="hit" from="SongPlayer" to="." method="_on_song_player_hit"]
+[connection signal="miss" from="SongPlayer" to="." method="_on_song_player_miss"]
+[connection signal="note" from="SongPlayer" to="." method="_on_song_player_note"]
+[connection signal="pressed" from="SongPlayer" to="." method="_on_song_player_pressed"]
+[connection signal="rest" from="SongPlayer" to="." method="_on_song_player_rest"]
+[connection signal="paused" from="CanvasLayer/PauseMenu" to="." method="_on_pause_menu_paused"]
+[connection signal="unpaused" from="CanvasLayer/PauseMenu" to="." method="_on_pause_menu_unpaused"]

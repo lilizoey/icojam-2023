@@ -36,3 +36,4 @@ layout_mode = 1
 [connection signal="play" from="TitleScreen" to="." method="_on_title_screen_play"]
 [connection signal="settings" from="TitleScreen" to="." method="_on_title_screen_settings"]
 [connection signal="_return" from="Settings" to="." method="_on_settings__return"]
+[connection signal="_return" from="LevelSelect" to="." method="_on_level_select__return"]

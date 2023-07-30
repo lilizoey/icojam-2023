@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://khglof828lmx"]
+[gd_scene load_steps=4 format=3 uid="uid://khglof828lmx"]
 
 [ext_resource type="Script" path="res://menus/tutorial.gd" id="1_dg88c"]
+[ext_resource type="Script" path="res://menus/level_select.gd" id="1_f5b84"]
+[ext_resource type="Script" path="res://menus/level_1.gd" id="3_rfjhg"]
 
 [node name="LevelSelect" type="HBoxContainer"]
 anchors_preset = 15
@@ -8,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_f5b84")
 
 [node name="Left" type="Control" parent="."]
 layout_mode = 2
@@ -21,6 +24,7 @@ size_flags_stretch_ratio = 2.0
 [node name="Top" type="Control" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -32,11 +36,12 @@ vertical_alignment = 1
 [node name="Middle" type="HSeparator" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.2
+size_flags_stretch_ratio = 0.3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
 
 [node name="Left" type="Control" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -56,8 +61,17 @@ script = ExtResource("1_dg88c")
 [node name="Level 1" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-disabled = true
 text = "Level 1"
+script = ExtResource("3_rfjhg")
+
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Return" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Return"
 
 [node name="Right" type="Control" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -70,3 +84,5 @@ size_flags_vertical = 3
 [node name="Right" type="Control" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/Return" to="." method="_on_return_pressed"]

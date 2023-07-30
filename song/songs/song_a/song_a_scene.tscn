@@ -1,0 +1,405 @@
+[gd_scene load_steps=21 format=3 uid="uid://bf7bm4px8l4b3"]
+
+[ext_resource type="Script" path="res://song/song_scene.gd" id="1_x6gh2"]
+[ext_resource type="Script" path="res://song/song_effect.gd" id="2_ohx3c"]
+[ext_resource type="PackedScene" uid="uid://tsom6up5ph2m" path="res://song/song_player.tscn" id="3_60ur1"]
+[ext_resource type="AudioStream" uid="uid://cos8joy55kqcn" path="res://song/songs/song_a/song_a.ogg" id="4_ppdhi"]
+[ext_resource type="Script" path="res://song/song.gd" id="5_klk7s"]
+[ext_resource type="PackedScene" uid="uid://dwindtn3lciui" path="res://menus/pause_menu.tscn" id="6_dgp1k"]
+[ext_resource type="AudioStream" uid="uid://0e16kmq5proi" path="res://song/songs/song_a/song_a_hitmarker.ogg" id="6_wynab"]
+[ext_resource type="AudioStream" uid="uid://c3c166wtryg8c" path="res://song/songs/song_a/song_a_hit_a.ogg" id="7_5kug6"]
+[ext_resource type="AudioStream" uid="uid://b2350j7tt5crc" path="res://song/songs/song_a/song_a_metronome.ogg" id="7_flc5p"]
+[ext_resource type="AudioStream" uid="uid://c4x76srdoqob3" path="res://song/songs/song_a/song_a_hit_b.ogg" id="8_lip8n"]
+
+[sub_resource type="Resource" id="Resource_nr0ye"]
+script = ExtResource("2_ohx3c")
+animation_player = NodePath("DefaultPlayerA")
+on_hit_animation = "hit"
+on_hit_ok_animation = ""
+on_hit_good_animation = ""
+on_hit_perfect_animation = ""
+on_miss_animation = "miss"
+on_pressed_animation = ""
+on_note_animation = ""
+on_rest_animation = ""
+
+[sub_resource type="Resource" id="Resource_wui7r"]
+script = ExtResource("2_ohx3c")
+animation_player = NodePath("DefaultPlayerB")
+on_hit_animation = "hit"
+on_hit_ok_animation = ""
+on_hit_good_animation = ""
+on_hit_perfect_animation = ""
+on_miss_animation = "miss"
+on_pressed_animation = ""
+on_note_animation = ""
+on_rest_animation = ""
+
+[sub_resource type="Animation" id="Animation_w4dpk"]
+resource_name = "hit"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DefaultPlayerA/HitA:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/ColorRect:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(60, 60), Vector2(40, 40)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/ColorRect:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-10, -10), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pwb4n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DefaultPlayerA/HitA:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/ColorRect:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(40, 40)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/ColorRect:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_t7tb4"]
+resource_name = "miss"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/ColorRect:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(60, 60), Vector2(40, 40)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/ColorRect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-10, -10), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8vx83"]
+_data = {
+"RESET": SubResource("Animation_pwb4n"),
+"hit": SubResource("Animation_w4dpk"),
+"miss": SubResource("Animation_t7tb4")
+}
+
+[sub_resource type="Animation" id="Animation_3o7um"]
+resource_name = "hit"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DefaultPlayerB/HitB:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D2/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D2/ColorRect:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(60, 60), Vector2(40, 40)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D2/ColorRect:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-10, -10), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_l4g7g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DefaultPlayerB/HitB:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D2/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D2/ColorRect:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(40, 40)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D2/ColorRect:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_72jxa"]
+resource_name = "miss"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D2/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D2/ColorRect:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(60, 60), Vector2(40, 40)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D2/ColorRect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-10, -10), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4tqdf"]
+_data = {
+"RESET": SubResource("Animation_l4g7g"),
+"hit": SubResource("Animation_3o7um"),
+"miss": SubResource("Animation_72jxa")
+}
+
+[node name="SongScene" type="Node2D"]
+script = ExtResource("1_x6gh2")
+default_a_effect = SubResource("Resource_nr0ye")
+default_b_effect = SubResource("Resource_wui7r")
+
+[node name="SongPlayer" parent="." node_paths=PackedStringArray("song", "other_audios") instance=ExtResource("3_60ur1")]
+song = NodePath("Song")
+display_debug = true
+other_audios = [NodePath("HitMarkers"), NodePath("Metronome")]
+
+[node name="Song" type="AudioStreamPlayer" parent="SongPlayer"]
+stream = ExtResource("4_ppdhi")
+bus = &"Music"
+script = ExtResource("5_klk7s")
+file = "res://song/songs/song_a/song_a.txt"
+
+[node name="HitMarkers" type="AudioStreamPlayer" parent="SongPlayer"]
+stream = ExtResource("6_wynab")
+bus = &"Hit Sound"
+
+[node name="Metronome" type="AudioStreamPlayer" parent="SongPlayer"]
+stream = ExtResource("7_flc5p")
+bus = &"Metronome"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_dgp1k")]
+visible = false
+
+[node name="DefaultPlayerA" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8vx83")
+}
+
+[node name="HitA" type="AudioStreamPlayer" parent="DefaultPlayerA"]
+stream = ExtResource("7_5kug6")
+bus = &"Hit Sound"
+
+[node name="DefaultPlayerB" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4tqdf")
+}
+
+[node name="HitB" type="AudioStreamPlayer" parent="DefaultPlayerB"]
+stream = ExtResource("8_lip8n")
+bus = &"Hit Sound"
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(205, 313)
+
+[node name="ColorRect" type="ColorRect" parent="Node2D"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2(789, 321)
+
+[node name="ColorRect" type="ColorRect" parent="Node2D2"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="hit" from="SongPlayer" to="." method="_on_song_player_hit"]
+[connection signal="miss" from="SongPlayer" to="." method="_on_song_player_miss"]
+[connection signal="note" from="SongPlayer" to="." method="_on_song_player_note"]
+[connection signal="pressed" from="SongPlayer" to="." method="_on_song_player_pressed"]
+[connection signal="rest" from="SongPlayer" to="." method="_on_song_player_rest"]
+[connection signal="paused" from="CanvasLayer/PauseMenu" to="." method="_on_pause_menu_paused"]
+[connection signal="unpaused" from="CanvasLayer/PauseMenu" to="." method="_on_pause_menu_unpaused"]

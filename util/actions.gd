@@ -68,6 +68,17 @@ func increment_action():
 func current_action_start() -> float:
 	return time_passed.to_float() * whole_length_seconds()
 
+func last_action_start() -> float:
+	if current_action > 0:
+		return time_passed.to_float() * whole_length_seconds() - actions[current_action - 1].fraction().to_float() * whole_length_seconds()
+	else:
+		return current_action_start()
+
+func decrement_broken():
+	if current_action > 0:
+		time_passed = time_passed.sub(actions[current_action - 1].fraction())
+		current_action -= 1
+
 func has_reached_end() -> bool:
 	return current_action >= actions.size()
 
@@ -119,6 +130,9 @@ func last_note_start() -> Fraction:
 		i -= 1
 	
 	return current
+
+func last_note_start_seconds() -> float:
+	return last_note_start().to_float() * whole_length_seconds()
 
 func next_note_start() -> Fraction:
 	if next_note == -1:

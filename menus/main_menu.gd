@@ -16,3 +16,6 @@ func _on_title_screen_settings():
 
 func _on_title_screen_play():
 	change_screen($LevelSelect)
+
+func _on_level_select__return():
+	change_screen($TitleScreen)

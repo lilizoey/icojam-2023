@@ -1,12 +1,14 @@
 class_name SongPlayer extends Node
 
-signal note(action: Song.Action, beat_fraction: Fraction)
-signal rest(action: Song.Action, beat_fraction: Fraction)
+signal note(action: Song.Action, index: int, beat_fraction: Fraction)
+signal rest(action: Song.Action, index: int, beat_fraction: Fraction)
 signal hit(action: Song.Action, note: Note, index: int, accuracy: Constants.FullAccuracy)
 signal miss(action: Song.Action, note: Note, index: int, early_late: Constants.EarlyLate)
-signal pressed(action: Song.Action)
+signal pressed(action: Song.Action, index: int, )
 
 @export var song: Song
+@export var display_debug: bool = false
+@export var other_audios: Array[AudioStreamPlayer] = []
 
 var hit_data := {
 	Song.Action.A: {},
@@ -18,15 +20,22 @@ func _ready():
 	song.rest.connect(on_song_rest)
 	song.incremented.connect(on_song_incremented)
 	song.lost_note.connect(on_song_lost_note)
+	$CanvasLayer/DebugMenu.initialize(self)
+	if display_debug: 
+		$CanvasLayer/DebugMenu.activate()
+	
+	song.play()
+	for audio in other_audios:
+		audio.play()
 
 func get_action_data(action: Song.Action) -> Dictionary:
 	return hit_data[action]
 
-func on_song_note(action: Song.Action, beat_fraction: Fraction):
-	note.emit(action, beat_fraction)
+func on_song_note(action: Song.Action, index: int, beat_fraction: Fraction):
+	note.emit(action, index, beat_fraction)
 
-func on_song_rest(action: Song.Action, beat_fraction: Fraction):
-	rest.emit(action, beat_fraction)
+func on_song_rest(action: Song.Action, index: int, beat_fraction: Fraction):
+	rest.emit(action, index, beat_fraction)
 
 func on_song_incremented(action: Song.Action, last_sign: Sign, new_sign: Sign, last_index: int, new_index: int):
 	pass
@@ -34,6 +43,7 @@ func on_song_incremented(action: Song.Action, last_sign: Sign, new_sign: Sign, l
 func on_song_lost_note(action: Song.Action, note: Note, index: int):
 	var data := get_action_data(action)
 	if not data.has(index):
+		data[index] = null
 		miss.emit(action, note, index, Constants.EarlyLate.Late)
 
 func _unhandled_input(event):
@@ -71,6 +81,15 @@ func handle_hit(action: Song.Action, current_hit: Actions.Hit):
 
 func pause():
 	song.stream_paused = true
+	for audio in other_audios:
+		audio.stream_paused = true
 
 func unpause():
 	song.stream_paused = false
+	for audio in other_audios:
+		audio.stream_paused = false
+
+func toggle_pause():
+	song.stream_paused = not song.stream_paused
+	for audio in other_audios:
+		audio.stream_paused = song.stream_paused

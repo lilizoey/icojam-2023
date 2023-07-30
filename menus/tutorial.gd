@@ -1,6 +1,6 @@
 extends Button
 
-const TUTORIAL_SCENE: PackedScene = preload("res://debug_scene.tscn")
+const TUTORIAL_SCENE: PackedScene = preload("res://song/songs/tutorial/tutorial_scene.tscn")
 
 func _ready():
 	pressed.connect(on_pressed)

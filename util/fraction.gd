@@ -70,3 +70,6 @@ func divide(other: Fraction) -> Fraction:
 
 func to_float() -> float:
 	return float(numerator) / float(denominator)
+
+func _to_string():
+	return "%d/%d" % [numerator, denominator]

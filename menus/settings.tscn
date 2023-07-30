@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://nw2mo6jbtaeb"]
+[gd_scene load_steps=8 format=3 uid="uid://nw2mo6jbtaeb"]
 
 [ext_resource type="Script" path="res://menus/settings.gd" id="1_q5elm"]
 [ext_resource type="Script" path="res://menus/music_slider.gd" id="2_ehv1v"]
 [ext_resource type="Script" path="res://menus/hit_sound_slider.gd" id="3_fbhic"]
-[ext_resource type="AudioStream" uid="uid://c2d3b4i2qc6ru" path="res://songs/tutorial.ogg" id="3_i5q3c"]
-[ext_resource type="AudioStream" uid="uid://d08mq2mu6oty4" path="res://songs/tutorial_hit_a.ogg" id="4_ikbh8"]
+[ext_resource type="AudioStream" uid="uid://c2d3b4i2qc6ru" path="res://song/songs/tutorial/tutorial.ogg" id="3_qi32e"]
+[ext_resource type="AudioStream" uid="uid://d08mq2mu6oty4" path="res://song/songs/tutorial/tutorial_hit_a.ogg" id="5_w8uqr"]
+[ext_resource type="AudioStream" uid="uid://b2350j7tt5crc" path="res://song/songs/song_a/song_a_metronome.ogg" id="6_p3dqu"]
+[ext_resource type="Script" path="res://menus/metronome_slider.gd" id="6_ykm5h"]
 
 [node name="Settings" type="HBoxContainer"]
 anchors_preset = 15
@@ -54,7 +56,7 @@ value = 100.0
 script = ExtResource("2_ehv1v")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Music/MusicSlider"]
-stream = ExtResource("3_i5q3c")
+stream = ExtResource("3_qi32e")
 bus = &"Music"
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
@@ -77,8 +79,31 @@ value = 100.0
 script = ExtResource("3_fbhic")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VBoxContainer/ScrollContainer/VBoxContainer/HitSounds/HitSoundSlider"]
-stream = ExtResource("4_ikbh8")
+stream = ExtResource("5_w8uqr")
 bus = &"Hit Sound"
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Metronome" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Metronome"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Metronome"
+
+[node name="MetronomeSlider" type="HSlider" parent="VBoxContainer/ScrollContainer/VBoxContainer/Metronome"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 4.0
+value = 100.0
+script = ExtResource("6_ykm5h")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Metronome/MetronomeSlider"]
+stream = ExtResource("6_p3dqu")
+bus = &"Metronome"
 
 [node name="Return" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -93,4 +118,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
+[connection signal="drag_ended" from="VBoxContainer/ScrollContainer/VBoxContainer/Metronome/MetronomeSlider" to="VBoxContainer/ScrollContainer/VBoxContainer/Metronome/MetronomeSlider" method="_on_drag_ended"]
+[connection signal="drag_started" from="VBoxContainer/ScrollContainer/VBoxContainer/Metronome/MetronomeSlider" to="VBoxContainer/ScrollContainer/VBoxContainer/Metronome/MetronomeSlider" method="_on_drag_started"]
+[connection signal="value_changed" from="VBoxContainer/ScrollContainer/VBoxContainer/Metronome/MetronomeSlider" to="VBoxContainer/ScrollContainer/VBoxContainer/Metronome/MetronomeSlider" method="_on_value_changed"]
 [connection signal="pressed" from="VBoxContainer/Return" to="." method="_on_return_pressed"]
