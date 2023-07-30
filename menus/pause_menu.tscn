@@ -1,0 +1,93 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwindtn3lciui"]
+
+[ext_resource type="Script" path="res://menus/pause_menu.gd" id="1_ijit8"]
+[ext_resource type="PackedScene" uid="uid://nw2mo6jbtaeb" path="res://menus/settings.tscn" id="2_gfbfi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r5q1a"]
+bg_color = Color(0, 0, 0, 0.27451)
+
+[node name="PauseMenu" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r5q1a")
+script = ExtResource("1_ijit8")
+
+[node name="MainPause" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Left" type="Control" parent="MainPause"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPause"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="Top" type="Control" parent="MainPause/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MainPause/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Middle" type="Control" parent="MainPause/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPause/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Left" type="Control" parent="MainPause/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPause/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="Return" type="Button" parent="MainPause/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Return"
+
+[node name="Settings" type="Button" parent="MainPause/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Settings"
+
+[node name="ExitToLevelSelect" type="Button" parent="MainPause/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Exit To Main Menu"
+
+[node name="Right" type="Control" parent="MainPause/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Bottom" type="Control" parent="MainPause/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Right" type="Control" parent="MainPause"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Settings" parent="." instance=ExtResource("2_gfbfi")]
+visible = false
+layout_mode = 2
+
+[connection signal="pressed" from="MainPause/VBoxContainer/HBoxContainer/VBoxContainer/Return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="MainPause/VBoxContainer/HBoxContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MainPause/VBoxContainer/HBoxContainer/VBoxContainer/ExitToLevelSelect" to="." method="_on_exit_to_level_select_pressed"]
+[connection signal="_return" from="Settings" to="." method="_on_settings__return"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://rlry2fgpi4qd"]
+[gd_scene load_steps=17 format=3 uid="uid://rlry2fgpi4qd"]
 
 [ext_resource type="Script" path="res://node_2d.gd" id="1_uuwvl"]
 [ext_resource type="Script" path="res://song_player.gd" id="2_oawrg"]
 [ext_resource type="AudioStream" uid="uid://d08mq2mu6oty4" path="res://songs/tutorial_hit_a.ogg" id="2_r5pbh"]
+[ext_resource type="PackedScene" uid="uid://dwindtn3lciui" path="res://menus/pause_menu.tscn" id="2_u2noy"]
 [ext_resource type="AudioStream" uid="uid://c3u0pg300kffx" path="res://songs/tutorial_hit_b.ogg" id="3_0uubn"]
 [ext_resource type="AudioStream" uid="uid://c2d3b4i2qc6ru" path="res://songs/tutorial.ogg" id="3_med28"]
 [ext_resource type="Script" path="res://util/song.gd" id="4_7xmj3"]
@@ -317,11 +318,18 @@ position = Vector2(357, 137)
 [node name="Label" parent="DebugHitTrackerB/ColorRect" index="0"]
 text = "B"
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_u2noy")]
+visible = false
+
 [connection signal="hit" from="SongPlayer" to="." method="_on_song_player_hit"]
 [connection signal="miss" from="SongPlayer" to="." method="_on_song_player_miss"]
 [connection signal="note" from="SongPlayer" to="." method="_on_song_player_note"]
 [connection signal="pressed" from="SongPlayer" to="." method="_on_song_player_pressed"]
 [connection signal="rest" from="SongPlayer" to="." method="_on_song_player_rest"]
+[connection signal="paused" from="CanvasLayer/PauseMenu" to="." method="_on_pause_menu_paused"]
+[connection signal="unpaused" from="CanvasLayer/PauseMenu" to="." method="_on_pause_menu_unpaused"]
 
 [editable path="DebugHitTrackerA"]
 [editable path="DebugHitTrackerB"]

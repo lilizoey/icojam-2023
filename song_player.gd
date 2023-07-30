@@ -68,3 +68,9 @@ func handle_hit(action: Song.Action, current_hit: Actions.Hit):
 			miss.emit(action, current_hit.note, current_hit.index, Constants.EarlyLate.Late)
 		_:
 			hit.emit(action, current_hit.note, current_hit.index, current_hit.accuracy)
+
+func pause():
+	song.stream_paused = true
+
+func unpause():
+	song.stream_paused = false

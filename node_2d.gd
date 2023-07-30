@@ -37,4 +37,8 @@ func _on_song_player_rest(action, beat_fraction):
 		Song.Action.B:
 			$BeatPlayerB.play("rest")
 
+func _on_pause_menu_paused():
+	$SongPlayer.pause()
 
+func _on_pause_menu_unpaused():
+	$SongPlayer.unpause()
