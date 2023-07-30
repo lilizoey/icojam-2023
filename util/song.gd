@@ -16,8 +16,6 @@ signal lost_note(action: Action, note: Note, index: int)
 var actions := {}
 
 func _ready():
-	Config.music_changed.connect(on_music_volume_changed)
-	volume_db = Config.music_volume_db()
 	var file_access := FileAccess.open(file, FileAccess.READ)
 	var content := file_access.get_as_text(true)
 	var data := Parser.parse(content)
@@ -70,12 +68,11 @@ func reset():
 
 func get_current_time() -> float:
 	var current_time := get_playback_position()
+	current_time += AudioServer.get_time_since_last_mix()
+	current_time -= AudioServer.get_output_latency()
 	current_time -= offset
 	return current_time
 
 func hit(action: Action, ignore_indices: Array = []) -> Actions.Hit:
 	var current_actions: Actions = actions[action]
 	return current_actions.get_hit(get_current_time(), ignore_indices)
-	
-func on_music_volume_changed(volume_db: float):
-	self.volume_db = volume_db

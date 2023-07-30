@@ -301,6 +301,7 @@ song = NodePath("Song")
 stream = ExtResource("3_med28")
 volume_db = -10.0
 autoplay = true
+bus = &"Music"
 script = ExtResource("4_7xmj3")
 file = "res://songs/tutorial.txt"
 

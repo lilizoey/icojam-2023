@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://nw2mo6jbtaeb"]
+[gd_scene load_steps=6 format=3 uid="uid://nw2mo6jbtaeb"]
 
 [ext_resource type="Script" path="res://menus/settings.gd" id="1_q5elm"]
 [ext_resource type="Script" path="res://menus/music_slider.gd" id="2_ehv1v"]
 [ext_resource type="Script" path="res://menus/hit_sound_slider.gd" id="3_fbhic"]
+[ext_resource type="AudioStream" uid="uid://c2d3b4i2qc6ru" path="res://songs/tutorial.ogg" id="3_i5q3c"]
+[ext_resource type="AudioStream" uid="uid://d08mq2mu6oty4" path="res://songs/tutorial_hit_a.ogg" id="4_ikbh8"]
 
 [node name="Settings" type="HBoxContainer"]
 anchors_preset = 15
@@ -51,6 +53,10 @@ size_flags_stretch_ratio = 4.0
 value = 100.0
 script = ExtResource("2_ehv1v")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Music/MusicSlider"]
+stream = ExtResource("3_i5q3c")
+bus = &"Music"
+
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -69,6 +75,10 @@ size_flags_vertical = 1
 size_flags_stretch_ratio = 4.0
 value = 100.0
 script = ExtResource("3_fbhic")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VBoxContainer/ScrollContainer/VBoxContainer/HitSounds/HitSoundSlider"]
+stream = ExtResource("4_ikbh8")
+bus = &"Hit Sound"
 
 [node name="Return" type="Button" parent="VBoxContainer"]
 layout_mode = 2
