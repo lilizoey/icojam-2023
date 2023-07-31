@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SongEffect" load_steps=2 format=3 uid="uid://cy5uf8johmwjx"]
+
+[ext_resource type="Script" path="res://song/song_effect.gd" id="1_kk43t"]
+
+[resource]
+script = ExtResource("1_kk43t")
+animation_player = NodePath("")
+on_hit_animation = ""
+on_hit_ok_animation = ""
+on_hit_good_animation = ""
+on_hit_perfect_animation = ""
+on_miss_animation = ""
+on_pressed_animation = ""
+on_note_animation = ""
+on_rest_animation = "launch_6"

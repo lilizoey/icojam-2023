@@ -55,7 +55,6 @@ func miss(note: Note, index: int, early_late: Constants.EarlyLate, default_playe
 	var player := get_player()
 	if not player:
 		player = default_player
-	print(player.get_path(), " ", player.get_animation_list())
 	if on_miss_animation:
 		player.play(on_miss_animation)
 		return true
@@ -77,7 +76,7 @@ func rest(beat_fraction: Fraction, default_player: AnimationPlayer) -> bool:
 	var player := get_player()
 	if not player:
 		player = default_player
-	
+	print("a")
 	if on_rest_animation:
 		player.play(on_rest_animation)
 		return true

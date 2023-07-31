@@ -2,6 +2,7 @@ extends PanelContainer
 
 signal unpaused
 signal paused
+signal restart
 
 @onready var main_pause: Control = $MainPause
 @onready var settings: Control = $Settings
@@ -37,3 +38,7 @@ func toggle_paused():
 		paused.emit()
 		visible = true
 		is_paused = true
+
+func _on_restart_pressed():
+	restart.emit()
+	toggle_paused()

@@ -2,73 +2,108 @@
 1/8
 A:
 	# 1/2 BAR
-	R3
+	R R R
 	# 1 BAR
-	R6 | R N R N R N
-	R6 | R N R2 N R
-	R6 | R N R2 N R
-	R6 | R N R N R2
-	R6 | R N R/2 N R5/16
-	R6 | R N N R N N
-	R6 | R2 N/2 N/2 R3
-	R6 | R N/2 R N/2 R3/32 N3/32 R3/32 N3/32
-	# 2 BAR
-	R12 | R N/2 R N/2 R3/32 N3/32 R3/32 N3/32 | R N3/16 N/2 R N/2 N/2 R
-	# 1 BAR
-	R6 | R N/2 R N/2 R3/32 N3/32 R3/32 N3/32
-	R6 | R N N R N N
-	R6 | R2 N/2 N/2 R3
-	R6 | N/2 R N/2 R N/2 R5/16
-	# 1 BAR
-	R6 | R3/16 N/2 R N R N
-	# 1 BAR
-	R6 | R N/2 R/2 N N R N
-	R6 | R N R N3/32 R3/32 N3/32 R3/32
-	# 2 BAR 
-	R12 | R2 N/2 R N/2 N/2 N3/32 N3/32 | R3 N R N
-	# 1/2 BAR
-	R3 | R2 N
-	R3 | R N/2 R N/2
-	R3 | R2 N
-	R3 | R/2 N/2 R/2 N/2 R
-	# 1 BAR
-	R6 | R9/32 N3/32 R3/16 N3/32 R3/32
-	R6 | R3/15 N/2 R2 N R
+	R R R R R R | R N R N R N
+	R R R R R R | R N R R N R
+	R R R R R R | R N R R N R
+	R R R R R R | R N R N R R
+	R R R/2 R R R5/16 | R N R/2 N R R/2
+	R R R R R R | R N N R N N
+	R R R/2 R/2 R2 R | R R N/2 N/2 R2 R
+	R R/2 R R/2 R3/32 R3/32 R3/32 R3/32 | R N/2 R N/2 R3/32 N3/32 R3/32 N3/32
+	# 2 BAR, 103
+	R R/2 R R/2 R3/32 R3/32 R3/32 R3/32 | R R3/16 R/2 R R/2 R/2 R
+	R N/2 R N/2 R3/32 N3/32 R3/32 N3/32 | R N3/16 N/2 R N/2 N/2 R
+	
+	# 1 BAR, 133
+	R R/2 R R/2 R3/32 R3/32 R3/32 R3/32
+	R N/2 R N/2 R3/32 N3/32 R3/32 N3/32
+	
+	# 149
+	R R R R R R 
+	R N N R N N
+	
+	# 161
+	R2 R/2 R/2 R R R 
+	R2 N/2 N/2 R R R
+	
+	# 173
+	R/2 R R/2 R R/2 R5/16 
+	N/2 R N/2 R N/2 R5/16
+	
+	# 1 BAR, 185
+	R3/16 R/2 R R R R 
+	R3/16 N/2 R N R N
+	
+	# 1 BAR, 197
+	R R/2 R/2 R R R R 
+	R N/2 R/2 N N R N
+	
+	# 211
+	R R R R3/32 R3/32 R3/32 R3/32 
+	R N R N3/32 R3/32 N3/32 R3/32
+	
+	# 2 BAR, 225
+	R2 R/2 R R/2 R/2 R3/32 R3/32 | R3 R R R 
+	R2 N/2 R N/2 N/2 N3/32 N3/32 | R3 N R N
+	
+	# 1/2 BAR, 247
+	R2 R 
+	R2 N
+	
+	# 251
+	R R/2 R R/2 
+	R N/2 R N/2
+	
+	# 259
+	R2 R 
+	R2 N
+	
+	# 263
+	R/2 R/2 R/2 R/2 R 
+	R/2 N/2 R/2 N/2 R
+	
+	# 1 BAR, 273
+	R9/32 R3/32 R3/16 R3/32 R3/32 
+	R9/32 N3/32 R3/16 N3/32 R3/32
+	
+	# 283
+	R3/15 R/2 R2 R R 
+	R3/15 N/2 R2 N R
 B:	
 	# 1/2 BAR
-	R3
+	R R R
 	# 1 BAR
-	R6 | R6
-	R6 | R2 N N R N
-	R6 | R2 N N R N
-	R6 | R2 N R N N
-	R6 | R2 N/2 R N/2 N N
-	R6 | R3 N R2
-	R6 | R N R N3/32 N3/32 N3/32 N3/32
-	R6 | N R/2 N/2 N/2 R/2 N3/32 R3/32 N3/32 R3/32
+	R R R R R R | R6
+	R R R R R R | R2 N N R N
+	R R R R R R | R2 N N R N
+	R R R R R R | R2 N R N N
+	R R R R R R | R2 N/2 R N/2 N N
+	R R R R R R | R3 N R2
+	R R R R R R | R N R N3/32 N3/32 N3/32 N3/32
+	R R R R R R | N R/2 N/2 N/2 R/2 N3/32 R3/32 N3/32 R3/32
 	# 2 BAR
-	R12 | N R/2 N/2 N/2 R/2 N3/32 R3/32 N3/32 R3/32 | N R2 N/2 N/2 R N
-	R12 | N R/2 N/2 N/2 R/2 N3/32 R3/32 N3/32 R3/32 | N R2 N/2 N/2 R N
-	R12 | N R/2 N/2 N/2 R/2 N3/32 R3/32 N3/32 R3/32 | N R2 N/2 N/2 R N
+	R R R R R R R R R R R R | N R/2 N/2 N/2 R/2 N3/32 R3/32 N3/32 R3/32 | N R2 N/2 N/2 R N
 	# 1 BAR
-	R6 | R3 N R2
-	R6 | R N R N3/32 N3/32 N3/32 N3/32
-	R6 | R/2 N R/2 N R/2 N R/2 N
+	R R R R R R | R3 N R2
+	R R R R R R | R N R N3/32 N3/32 N3/32 N3/32
+	R R R R R R | R/2 N R/2 N R/2 N R/2 N
 	# 1 BAR
-	R6 | R N/2 R/2 N/2 N/2 R3
+	R R R R R R | R N/2 R/2 N/2 N/2 R3
 	# 1 BAR
-	R6 | R3/16 N/2 R2 N R
-	R6 | R2 N R3/32 N3/32 R3/32 N3/32
+	R R R R R R | R3/16 N/2 R2 N R
+	R R R R R R | R2 N R3/32 N3/32 R3/32 N3/32
 	# 2 BAR 
-	R12 | R N R/2 N/2 N/2 R5/16 | N R N R3
+	R R R R R R R R R R R R | R N R/2 N/2 N/2 R5/16 | N R N R3
 	# 1/2 BAR
-	R3 | R N R
-	R3 | R3/16 N R2 N R/2
-	R3 | N3/32 N3/32 N/2 R
-	R3 | R N/2 R/2 N
+	R R R | R N R
+	R R R | R3/16 N R2 N R/2
+	R R R | N3/32 N3/32 N/2 R
+	R R R | R N/2 R/2 N
 	# 1 BAR
-	R6 | N3/32 R3/32 N3/32 R3/32 N3/32 R9/32
-	R6 | N R N R R5/16 N/2  
+	R R R R R R | N3/32 R3/32 N3/32 R3/32 N3/32 R9/32
+	R R R R R R | N R N R R5/16 N/2  
  
 	
 	

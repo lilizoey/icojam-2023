@@ -63,4 +63,5 @@ visible = false
 [connection signal="pressed" from="SongPlayer" to="." method="_on_song_player_pressed"]
 [connection signal="rest" from="SongPlayer" to="." method="_on_song_player_rest"]
 [connection signal="paused" from="CanvasLayer/PauseMenu" to="." method="_on_pause_menu_paused"]
+[connection signal="restart" from="CanvasLayer/PauseMenu" to="." method="_on_pause_menu_restart"]
 [connection signal="unpaused" from="CanvasLayer/PauseMenu" to="." method="_on_pause_menu_unpaused"]

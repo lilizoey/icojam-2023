@@ -4,11 +4,13 @@ signal note(action: Song.Action, index: int, beat_fraction: Fraction)
 signal rest(action: Song.Action, index: int, beat_fraction: Fraction)
 signal hit(action: Song.Action, note: Note, index: int, accuracy: Constants.FullAccuracy)
 signal miss(action: Song.Action, note: Note, index: int, early_late: Constants.EarlyLate)
-signal pressed(action: Song.Action, index: int, )
+signal pressed(action: Song.Action, index: int)
+signal finished
 
 @export var song: Song
 @export var display_debug: bool = false
 @export var other_audios: Array[AudioStreamPlayer] = []
+@export var video: VideoStreamPlayer
 
 var hit_data := {
 	Song.Action.A: {},
@@ -20,13 +22,17 @@ func _ready():
 	song.rest.connect(on_song_rest)
 	song.incremented.connect(on_song_incremented)
 	song.lost_note.connect(on_song_lost_note)
+	song.finished.connect(on_finished)
 	$CanvasLayer/DebugMenu.initialize(self)
 	if display_debug: 
 		$CanvasLayer/DebugMenu.activate()
-	
+
+func play():
 	song.play()
 	for audio in other_audios:
 		audio.play()
+	if video:
+		video.play()
 
 func get_action_data(action: Song.Action) -> Dictionary:
 	return hit_data[action]
@@ -83,13 +89,31 @@ func pause():
 	song.stream_paused = true
 	for audio in other_audios:
 		audio.stream_paused = true
+	if video:
+		video.paused = true
 
 func unpause():
 	song.stream_paused = false
 	for audio in other_audios:
 		audio.stream_paused = false
+	if video:
+		video.paused = false
 
 func toggle_pause():
 	song.stream_paused = not song.stream_paused
 	for audio in other_audios:
 		audio.stream_paused = song.stream_paused
+	if video:
+		video.paused = song.stream_paused
+
+func restart():
+	song.reset()
+	for audio in other_audios:
+		audio.stop()
+	hit_data = {
+		Song.Action.A: {},
+		Song.Action.B: {},
+	}
+
+func on_finished():
+	finished.emit()

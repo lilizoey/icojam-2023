@@ -61,6 +61,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Return"
 
+[node name="Restart" type="Button" parent="MainPause/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Restart"
+
 [node name="Settings" type="Button" parent="MainPause/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
@@ -88,6 +93,7 @@ visible = false
 layout_mode = 2
 
 [connection signal="pressed" from="MainPause/VBoxContainer/HBoxContainer/VBoxContainer/Return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="MainPause/VBoxContainer/HBoxContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="MainPause/VBoxContainer/HBoxContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MainPause/VBoxContainer/HBoxContainer/VBoxContainer/ExitToLevelSelect" to="." method="_on_exit_to_level_select_pressed"]
 [connection signal="_return" from="Settings" to="." method="_on_settings__return"]

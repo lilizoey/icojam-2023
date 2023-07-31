@@ -33,10 +33,10 @@ text = "Select A Level"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Middle" type="HSeparator" parent="VBoxContainer"]
+[node name="Middle" type="Control" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.3
+size_flags_stretch_ratio = 0.5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
